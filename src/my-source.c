@@ -5,7 +5,7 @@
 struct test_filter {
 	obs_source_t *source;
 
-  uint64_t focus_level;
+	uint64_t focus_level;
 };
 
 static const char *filter_getname(void *unused)
@@ -41,21 +41,22 @@ static void filter_destroy(void *data)
 	}
 }
 
-static struct obs_source_frame * 
-filter_render(void *data, struct obs_source_frame *frame) {
-  UNUSED_PARAMETER(data);
-  
-  blog(300, "H: %u", frame->height);
+static struct obs_source_frame *filter_render(void *data,
+					      struct obs_source_frame *frame)
+{
+	UNUSED_PARAMETER(data);
 
-  return frame;
+	blog(300, "H: %u", frame->height);
+
+	return frame;
 }
 
 struct obs_source_info my_source = {
-  .id           = "my_source",
-  .type         = OBS_SOURCE_TYPE_FILTER,
-  .output_flags = OBS_SOURCE_VIDEO | OBS_SOURCE_ASYNC,
-  .get_name     = filter_getname,
-  .create       = filter_create,
-  .destroy      = filter_destroy,
-  .filter_video = filter_render,
+	.id = "my_source",
+	.type = OBS_SOURCE_TYPE_FILTER,
+	.output_flags = OBS_SOURCE_VIDEO | OBS_SOURCE_ASYNC,
+	.get_name = filter_getname,
+	.create = filter_create,
+	.destroy = filter_destroy,
+	.filter_video = filter_render,
 };
