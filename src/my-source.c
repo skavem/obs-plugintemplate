@@ -1,5 +1,6 @@
 #include <obs-module.h>
 #include <util/base.h>
+#include <stdio.h>
 
 struct test_filter {
 	obs_source_t *source;
@@ -42,8 +43,6 @@ static void filter_destroy(void *data)
 
 static struct obs_source_frame * 
 filter_render(void *data, struct obs_source_frame *frame) {
-	struct test_filter *tf = data;
-
   char str[20];
   snprintf(str, sizeof(str), "H: %u", frame->height);
   blog(300, str);
@@ -51,7 +50,7 @@ filter_render(void *data, struct obs_source_frame *frame) {
   return frame;
 }
 
-struct obs_source_info my_source {
+struct obs_source_info my_source = {
   .id           = "my_source",
   .type         = OBS_SOURCE_TYPE_FILTER,
   .output_flags = OBS_SOURCE_VIDEO | OBS_SOURCE_ASYNC,
