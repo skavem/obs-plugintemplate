@@ -20,8 +20,8 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 
 #include "plugin-macros.generated.h"
 
-OBS_DECLARE_MODULE()
-OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
+OBS_DECLARE_MODULE();
+OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US");
 
 extern struct obs_source_info  my_source;
 
