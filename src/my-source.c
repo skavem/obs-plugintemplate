@@ -44,10 +44,8 @@ static void filter_destroy(void *data)
 static struct obs_source_frame * 
 filter_render(void *data, struct obs_source_frame *frame) {
   UNUSED_PARAMETER(data);
-
-  char str[20];
-  snprintf(str, sizeof(str), "H: %u", frame->height);
-  blog(300, str);
+  
+  blog(300, "H: %u", frame->height);
 
   return frame;
 }
